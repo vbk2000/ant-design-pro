@@ -23,9 +23,9 @@ interface ConceptState {
 
 @connect(
   ({
-     conceptMonitor,
-     loading,
-   }: {
+    conceptMonitor,
+    loading,
+  }: {
     conceptMonitor: any;
     loading: {
       effects: { [key: string]: boolean };
@@ -110,10 +110,7 @@ class Concept extends Component<ConceptProps, ConceptState> {
       <GridContent>
         <React.Fragment>
           <Suspense fallback={null}>
-            <PoolsCard
-              poolData={poolData}
-              handleTabChange={this.handleTabChange}
-            />
+            <PoolsCard poolData={poolData} handleTabChange={this.handleTabChange} />
           </Suspense>
         </React.Fragment>
       </GridContent>
