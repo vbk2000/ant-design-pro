@@ -1,15 +1,18 @@
 export interface LonghuTableItem {
   date: Date;
   code: string;
+  name:string;
   period: string;
   buy_amt: number;
   sell_amt: number;
   net_amt:number;
   abnormal_name: string;
+  close:number;
+  pct_change:number;
+  amount:number
 
   market:string;
-  price:number;
-  pct_change:number;
+
 }
 
 export interface LonghuQueryParams {
