@@ -51,19 +51,7 @@ const LonghuTable = () => {
       width: 80,
       fixed: 'left',
     },
-    {
-      title: '类型',
-      dataIndex: 'period',
-      key: 'period',
-      render: val => (val === '1d' ? '1日' : '3日'),
-      filters: [
-        { text: '1日', value: '1d' },
-        { text: '3日', value: '3d' },
-      ],
-      width: 80,
-      fixed: 'left',
-      onFilter: (value, record) => record.period.includes(value),
-    },
+
     {
       title: '买入',
       dataIndex: 'buy_amt',
@@ -92,7 +80,25 @@ const LonghuTable = () => {
     {
       title: '涨幅',
       dataIndex: 'pct_change',
+      render: val => {
+        let color = val > 0 ? 'red' : 'green';
+        return <span style={{color: color}}>{val}%</span>
+      }, //(`${val}%`)
+
       width: 80,
+      sorter: (a, b) => a.pct_change - b.pct_change,
+    },
+    {
+      title: '类型',
+      dataIndex: 'period',
+      key: 'period',
+      render: val => (val === '1d' ? '1日' : '3日'),
+      filters: [
+        {text: '1日', value: '1d'},
+        {text: '3日', value: '3d'},
+      ],
+      width: 80,
+      onFilter: (value, record) => record.period.includes(value),
     },
     {
       title: '游资',
@@ -149,7 +155,7 @@ const LonghuTable = () => {
         columns={columns}
         dataSource={data}
         pagination={false}
-        scroll={{ y: 480 }}
+        scroll={{y: 480}}
         size="middle"
       />
     </Card>
