@@ -85,6 +85,12 @@ export default defineConfig({
               component: './ListTableList',
             },
             {
+              name:'longhu',
+              icon:'table',
+              path: '/longhu',
+              component: './longhu'
+            },
+            {
               component: './404',
             },
           ],
